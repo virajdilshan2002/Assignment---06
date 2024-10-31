@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/pages.css" />
+    <link rel="stylesheet" href="/css/orders.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Turret+Road:wght@200;300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Turret+Road:wght@200;300;400;500;700;800&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img class="logo" src="/assets/images/logo/pos.png" alt="pos-logo" />
+        <div class="name">POS System</div>
+        <nav>
+          <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li><a href="/pages/orders.html">ORDERS</a></li>
+            <li><a href="/pages/store.html">STORE</a></li>
+            <li><a href="/pages/customer.html">CUSTOMERS</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="btn-container">
+        <button class="signUp-btn">Sign Up</button>
+        <button class="logOut-btn">Log Out</button>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="page-title-container">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="page-title">Orders</span>
+        </div>
+
+        <div class="order-form-container">
+          <div class="order-form">
+            <div class="title">Invoice Details</div>
+            <div class="form-content">
+              <div class="row">
+                <div class="data">
+                  <label for="id">Order Id:</label>
+                  <input type="text" placeholder="Order Id" />
+                </div>
+                <div class="data">
+                  <label for="date">Date:</label>
+                  <input type="text" placeholder="10/31/2024" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="data">
+                  <label for="customer">Customer:</label>
+                  <input type="text" placeholder="Customer" />
+                </div>
+                <div class="data">
+                  <label for="customerId">Customer Id:</label>
+                  <input type="text" placeholder="C001" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="order-form">
+            <div class="title">Item Select</div>
+            <div class="form-content"></div>
+          </div>
+          <div class="order-form">
+            <div class="form-content"></div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Order Id</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+              </tr>
+
+              <tr>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+                <td>Order</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
