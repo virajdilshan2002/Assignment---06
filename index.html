@@ -6,6 +6,9 @@
     <title>POS SYSTEM</title>
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/orders.css" />
+    <link rel="stylesheet" href="/css/pages.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -21,6 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Turret+Road:wght@200;300;400;500;700;800&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <header>
@@ -30,10 +34,14 @@
         <div class="name">POS System</div>
         <nav>
           <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="/pages/orders.html">ORDERS</a></li>
-            <li><a href="/pages/store.html">STORE</a></li>
-            <li><a href="/pages/customer.html">CUSTOMERS</a></li>
+            <li><button data-page="home">Home</button></li>
+            <li><button data-page="orders">Orders</button></li>
+            <li><button data-page="store">Store</button></li>
+            <li><button data-page="customers">Customers</button></li>
+
+            <!-- <li><a href="/pages/orders.html">ORDERS</a></li> -->
+            <!-- <li><a href="/pages/store.html">STORE</a></li> -->
+            <!-- <li><a href="/pages/customer.html">CUSTOMERS</a></li> -->
           </ul>
         </nav>
       </div>
@@ -43,102 +51,436 @@
       </div>
     </header>
     <main>
-      <div class="greet-time-container">
-        <div class="greet">
-          <i class="fa-solid fa-house"></i>
-          Hello! <br />
-          Good Morning!
+      <section id="home" class="page active">
+        <div class="container">
+          <div class="greet-time-container">
+            <div class="greet">
+              <i class="fa-solid fa-house"></i>
+              Hello! <br />
+              Good Morning!
+            </div>
+            <div class="date-time">
+              <div id="currentDate" class="date"></div>
+              <div id="currentTime" class="time"></div>
+            </div>
+          </div>
+          <div class="status-container">
+            <div class="banner">
+              <span class="banner-title">Customers</span
+              ><span class="count">120</span>
+            </div>
+            <div class="banner">
+              <span class="banner-title">Items</span
+              ><span class="count">50</span>
+            </div>
+            <div class="banner">
+              <span class="banner-title">Orders</span
+              ><span class="count">25</span>
+            </div>
+          </div>
+          <div class="recent-orders-container">
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="4">Orders</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+                <tr>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                  <td>order</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="date-time">
-          <div id="currentDate" class="date"></div>
-          <div id="currentTime" class="time"></div>
+      </section>
+      <section id="orders" class="page">
+        <div class="container">
+          <div class="page-title-container">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="page-title">Orders</span>
+          </div>
+
+          <div class="order-form-container">
+            <div class="order-form">
+              <div class="title">Invoice Details</div>
+              <div class="form-content">
+                <div class="row">
+                  <div class="data">
+                    <label for="id">Order Id:</label>
+                    <input type="text" placeholder="Order Id" />
+                  </div>
+                  <div class="data">
+                    <label for="date">Date:</label>
+                    <input type="text" placeholder="10/31/2024" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="data">
+                    <label for="customer">Customer:</label>
+                    <input type="text" placeholder="Customer" />
+                  </div>
+                  <div class="data">
+                    <label for="customerId">Customer Id:</label>
+                    <input type="text" placeholder="C001" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="order-form">
+              <div class="title">Item Select</div>
+              <div class="form-content"></div>
+            </div>
+            <div class="order-form">
+              <div class="form-content"></div>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order Id</th>
+                  <th>Unit Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                </tr>
+                <tr>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                </tr>
+                <tr>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                </tr>
+                <tr>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                </tr>
+
+                <tr>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                  <td>Order</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-      <div class="status-container">
-        <div class="banner">
-          <span class="banner-title">Customers</span
-          ><span class="count">120</span>
+      </section>
+      <section id="store" class="page">
+        <div class="container">
+          <div class="page-title-container">
+            <i class="fa-solid fa-store"></i>
+            <span class="page-title">Store</span>
+          </div>
+          <div class="search-options-container">
+            <div class="search">
+              <div class="title">Search Item</div>
+              <div class="search-form">
+                <input type="text" placeholder="Input Item Name/Code Here" />
+                <div class="search-btn-container">
+                  <select class="search-type" name="type" id="type">
+                    <option value="name" selected>Item Name</option>
+                    <option value="code">Item Code</option>
+                  </select>
+                  <button class="search-btn">Search</button>
+                </div>
+              </div>
+            </div>
+            <div class="options">
+              <button class="add-btn green">New Customer</button>
+              <button class="all-cus-btn">All Customers</button>
+            </div>
+          </div>
+          <div class="action-container">
+            <button class="action-btn red">Delete</button
+            ><button class="action-btn green">Details</button
+            ><button class="action-btn white">Clear</button>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item Code</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+                <tr>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                  <td>Item</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="banner">
-          <span class="banner-title">Items</span><span class="count">50</span>
+      </section>
+      <section id="customers" class="page">
+        <div class="container">
+          <div class="page-title-container">
+            <i class="fa-solid fa-users"></i>
+            <span class="page-title">Customers</span>
+          </div>
+          <div class="search-options-container">
+            <div class="search">
+              <div class="title">Search Customer</div>
+              <div class="search-form">
+                <input type="text" placeholder="Input Name/NIC/Phone Here" />
+                <div class="search-btn-container">
+                  <select class="search-type" name="type" id="type">
+                    <option value="Name" selected>Name</option>
+                    <option value="NIC">NIC</option>
+                    <option value="Phone">Phone</option>
+                  </select>
+                  <button class="search-btn">Search</button>
+                </div>
+              </div>
+            </div>
+            <div class="options">
+              <button class="add-btn green">New Customer</button>
+              <button class="all-cus-btn">All Customers</button>
+            </div>
+          </div>
+          <div class="action-container">
+            <button class="action-btn red">Delete</button
+            ><button class="action-btn green">Details</button
+            ><button class="action-btn white">Clear</button>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Age</th>
+                  <th>Address</th>
+                  <th>Phone</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+                <tr>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                  <td>Customer</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="banner">
-          <span class="banner-title">Orders</span><span class="count">25</span>
-        </div>
-      </div>
-      <div class="recent-orders-container">
-        <table>
-          <thead>
-            <tr>
-              <th colspan="4">Orders</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-            <tr>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-              <td>order</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      </section>
     </main>
     <footer></footer>
     <script src="/js/time-date.js"></script>
+    <script src="/js/page-navigations.js"></script>
   </body>
 </html>
