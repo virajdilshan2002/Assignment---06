@@ -18,7 +18,7 @@ $(document).ready(function () {
   });
 
   // Change hash when button is clicked
-  $("button").on("click", function () {
+  $(".btn-nav").on("click", function () {
     const page = $(this).data("page");
     window.location.hash = page;
   });

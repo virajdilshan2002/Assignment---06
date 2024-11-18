@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POS SYSTEM</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/home.css" />
-    <link rel="stylesheet" href="/css/orders.css" />
-    <link rel="stylesheet" href="/css/pages.css" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <link rel="stylesheet" href="/assets/css/home.css" />
+    <link rel="stylesheet" href="/assets/css/orders.css" />
+    <link rel="stylesheet" href="/assets/css/pages.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -24,6 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Turret+Road:wght@200;300;400;500;700;800&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
@@ -34,14 +35,12 @@
         <div class="name">POS System</div>
         <nav>
           <ul>
-            <li><button data-page="home">Home</button></li>
-            <li><button data-page="orders">Orders</button></li>
-            <li><button data-page="store">Store</button></li>
-            <li><button data-page="customers">Customers</button></li>
-
-            <!-- <li><a href="/pages/orders.html">ORDERS</a></li> -->
-            <!-- <li><a href="/pages/store.html">STORE</a></li> -->
-            <!-- <li><a href="/pages/customer.html">CUSTOMERS</a></li> -->
+            <li><button class="btn-nav" data-page="home">Home</button></li>
+            <li><button class="btn-nav" data-page="orders">Orders</button></li>
+            <li><button class="btn-nav" data-page="store">Store</button></li>
+            <li>
+              <button class="btn-nav" data-page="customers">Customers</button>
+            </li>
           </ul>
         </nav>
       </div>
@@ -85,61 +84,7 @@
                   <th colspan="4">Orders</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
-                <tr>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                  <td>order</td>
-                </tr>
+              <tbody id="recentOrderTable">
                 <tr>
                   <td>order</td>
                   <td>order</td>
@@ -159,7 +104,7 @@
           </div>
 
           <div class="order-form-container">
-            <div class="order-form">
+            <div id="invoiceForm" class="form">
               <div class="title">Invoice Details</div>
               <div class="form-content">
                 <div class="row">
@@ -182,14 +127,90 @@
                     <input type="text" placeholder="C001" />
                   </div>
                 </div>
+                <div class="row">
+                  <div class="data">
+                    <label for="name">Name:</label>
+                    <input type="text" placeholder="" />
+                  </div>
+                  <div class="data">
+                    <label for="salary">Salary:</label>
+                    <input type="text" placeholder="" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="data" style="width: 100% !important">
+                    <label for="address">Address:</label>
+                    <input type="text" placeholder="" />
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="order-form">
+            <div id="selectItemForm" class="form">
               <div class="title">Item Select</div>
-              <div class="form-content"></div>
+              <div class="form-content">
+                <div class="row">
+                  <div class="data">
+                    <label for="item">Item:</label>
+                    <input type="text" placeholder="Select Item Code" />
+                  </div>
+                  <div class="data">
+                    <label for="itemCode">Item Code:</label>
+                    <input type="text" placeholder="" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="data">
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" placeholder="" />
+                  </div>
+                  <div class="data">
+                    <label for="price">Price:</label>
+                    <input type="number" placeholder="" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="data">
+                    <label for="availableQty">Available Qty:</label>
+                    <input type="number" placeholder="" />
+                  </div>
+                  <div class="data">
+                    <label for="orderQty">Order Qty:</label>
+                    <input type="number" placeholder="" />
+                  </div>
+                </div>
+                <div class="row">
+                  <button id="btn-add-item">Add Item</button>
+                </div>
+              </div>
             </div>
-            <div class="order-form">
-              <div class="form-content"></div>
+            <div id="transactionForm" class="form">
+              <div class="form-content">
+                <div class="row">
+                  <label class="lblTotal">Total: 00.00 Rs/=</label>
+                </div>
+                <div class="row">
+                  <label class="lblSubTotal">SubTotal: 00.00 Rs/=</label>
+                </div>
+                <div class="row">
+                  <div class="data">
+                    <label for="cash">Cash:</label>
+                    <input type="number" placeholder="" />
+                  </div>
+                  <div class="data">
+                    <label for="discount">Discount:</label>
+                    <input type="number" placeholder="" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="data" style="width: 100% !important">
+                    <label for="balance">Balance:</label>
+                    <input type="number" placeholder="" />
+                  </div>
+                </div>
+                <div class="row">
+                  <button id="btn-purchase">Purchase</button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -203,39 +224,7 @@
                   <th>Total</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                </tr>
-                <tr>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                </tr>
-                <tr>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                </tr>
-                <tr>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                </tr>
-
-                <tr>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                  <td>Order</td>
-                </tr>
-              </tbody>
+              <tbody id="orderTable"></tbody>
             </table>
           </div>
         </div>
@@ -280,73 +269,7 @@
                   <th>Unit Price</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
+              <tbody id="itemTable">
                 <tr>
                   <td>Item</td>
                   <td>Item</td>
@@ -380,7 +303,13 @@
               </div>
             </div>
             <div class="options">
-              <button class="add-btn green">New Customer</button>
+              <button
+                id="addNewCustomerBtn"
+                class="add-btn green"
+                data-page="addNewCustomer"
+              >
+                New Customer
+              </button>
               <button class="all-cus-btn">All Customers</button>
             </div>
           </div>
@@ -399,74 +328,7 @@
                   <th>Phone</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
+              <tbody id="customerTable">
                 <tr>
                   <td>Customer</td>
                   <td>Customer</td>
@@ -478,9 +340,14 @@
           </div>
         </div>
       </section>
+      <section id="addNewCustomer" class="page"></section>
     </main>
     <footer></footer>
-    <script src="/js/time-date.js"></script>
-    <script src="/js/page-navigations.js"></script>
+    <script src="/util/page-navigations.js"></script>
+    <script src="/util/time-date.js"></script>
+    <script src="/controller/itemController.js"></script>
+    <!-- <script src="/controller/customerController.js"></script> -->
+    <script src="/controller/itemController.js"></script>
+    <script src="/controller/orderController.js"></script>
   </body>
 </html>
