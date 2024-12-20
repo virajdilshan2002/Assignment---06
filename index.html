@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/assets/css/home.css" />
     <link rel="stylesheet" href="/assets/css/orders.css" />
     <link rel="stylesheet" href="/assets/css/pages.css" />
+    <link rel="stylesheet" href="/assets/css/addModel.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -66,15 +67,15 @@
           <div class="status-container">
             <div class="banner">
               <span class="banner-title">Customers</span
-              ><span class="count">120</span>
+              ><span class="count">0</span>
             </div>
             <div class="banner">
               <span class="banner-title">Items</span
-              ><span class="count">50</span>
+              ><span class="count">0</span>
             </div>
             <div class="banner">
               <span class="banner-title">Orders</span
-              ><span class="count">25</span>
+              ><span class="count">0</span>
             </div>
           </div>
           <div class="recent-orders-container">
@@ -109,8 +110,8 @@
               <div class="form-content">
                 <div class="row">
                   <div class="data">
-                    <label for="id">Order Id:</label>
-                    <input type="text" placeholder="Order Id" />
+                    <label for="orderId">Order Id:</label>
+                    <input id="orderId" type="text" disabled />
                   </div>
                   <div class="data">
                     <label for="date">Date:</label>
@@ -119,28 +120,8 @@
                 </div>
                 <div class="row">
                   <div class="data">
-                    <label for="customer">Customer:</label>
-                    <input type="text" placeholder="Customer" />
-                  </div>
-                  <div class="data">
                     <label for="customerId">Customer Id:</label>
                     <input type="text" placeholder="C001" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="data">
-                    <label for="name">Name:</label>
-                    <input type="text" placeholder="" />
-                  </div>
-                  <div class="data">
-                    <label for="salary">Salary:</label>
-                    <input type="text" placeholder="" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="data" style="width: 100% !important">
-                    <label for="address">Address:</label>
-                    <input type="text" placeholder="" />
                   </div>
                 </div>
               </div>
@@ -150,28 +131,27 @@
               <div class="form-content">
                 <div class="row">
                   <div class="data">
-                    <label for="item">Item:</label>
-                    <input type="text" placeholder="Select Item Code" />
-                  </div>
-                  <div class="data">
                     <label for="itemCode">Item Code:</label>
                     <input type="text" placeholder="" />
+                  </div>
+                  <div class="data" style="justify-content: end">
+                    <button class="search-btn">Search</button>
                   </div>
                 </div>
                 <div class="row">
                   <div class="data">
                     <label for="itemName">Item Name:</label>
-                    <input type="text" placeholder="" />
+                    <input type="text" disabled />
                   </div>
                   <div class="data">
                     <label for="price">Price:</label>
-                    <input type="number" placeholder="" />
+                    <input type="number" disabled />
                   </div>
                 </div>
                 <div class="row">
                   <div class="data">
                     <label for="availableQty">Available Qty:</label>
-                    <input type="number" placeholder="" />
+                    <input type="number" disabled />
                   </div>
                   <div class="data">
                     <label for="orderQty">Order Qty:</label>
@@ -189,25 +169,6 @@
                   <label class="lblTotal">Total: 00.00 Rs/=</label>
                 </div>
                 <div class="row">
-                  <label class="lblSubTotal">SubTotal: 00.00 Rs/=</label>
-                </div>
-                <div class="row">
-                  <div class="data">
-                    <label for="cash">Cash:</label>
-                    <input type="number" placeholder="" />
-                  </div>
-                  <div class="data">
-                    <label for="discount">Discount:</label>
-                    <input type="number" placeholder="" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="data" style="width: 100% !important">
-                    <label for="balance">Balance:</label>
-                    <input type="number" placeholder="" />
-                  </div>
-                </div>
-                <div class="row">
                   <button id="btn-purchase">Purchase</button>
                 </div>
               </div>
@@ -218,7 +179,7 @@
             <table>
               <thead>
                 <tr>
-                  <th>Order Id</th>
+                  <th>Item Id</th>
                   <th>Unit Price</th>
                   <th>Quantity</th>
                   <th>Total</th>
@@ -250,8 +211,65 @@
               </div>
             </div>
             <div class="options">
-              <button class="add-btn green">New Customer</button>
-              <button class="all-cus-btn">All Customers</button>
+              <!-- Button to trigger the modal -->
+              <button class="btn-primary" id="addNewItemBtn">New Item</button>
+
+              <!-- Modal structure -->
+              <div class="modal" id="itemModel">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title">Add New Item</h1>
+                      <button class="btn-close" id="closeItemModal">
+                        &times;
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="itemForm">
+                        <div class="form-group">
+                          <label for="itemCode">Item Code</label>
+                          <input type="text" id="itemCode" disabled />
+                          <label for="itemName">Item Name</label>
+                          <input
+                            type="text"
+                            id="itemName"
+                            placeholder="Enter item name"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="quantity">Quantity</label>
+                          <input
+                            type="number"
+                            id="quantity"
+                            placeholder="Enter quantity"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="unitPrice">Unit Price</label>
+                          <input
+                            type="number"
+                            id="unitPrice"
+                            placeholder="Enter unit price"
+                            step="0.01"
+                            min="0"
+                            required
+                          />
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn-secondary" id="closeItemModalFooter">
+                        Close
+                      </button>
+                      <button id="saveItemBtn" class="btn-primary">
+                        Save changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="action-container">
@@ -269,14 +287,7 @@
                   <th>Unit Price</th>
                 </tr>
               </thead>
-              <tbody id="itemTable">
-                <tr>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                  <td>Item</td>
-                </tr>
-              </tbody>
+              <tbody id="itemTable"></tbody>
             </table>
           </div>
         </div>
@@ -303,14 +314,67 @@
               </div>
             </div>
             <div class="options">
-              <button
-                id="addNewCustomerBtn"
-                class="add-btn green"
-                data-page="addNewCustomer"
-              >
+              <!-- Button to trigger the modal -->
+              <button class="btn-primary" id="addNewCustomerBtn">
                 New Customer
               </button>
-              <button class="all-cus-btn">All Customers</button>
+
+              <!-- Modal structure -->
+              <div class="modal" id="cusModel">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title">Add New Customer</h1>
+                      <button class="btn-close" id="closeCusModal">
+                        &times;
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="customerForm">
+                        <div class="form-group">
+                          <label for="customerId">Customer Id</label>
+                          <input type="text" id="customerId" disabled />
+                          <label for="customerName">Name</label>
+                          <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Enter customer name"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="customerAddress">Address</label>
+                          <textarea
+                            id="customerAddress"
+                            placeholder="Enter customer address"
+                            rows="3"
+                            required
+                          ></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="customerContact">Contact</label>
+                          <input
+                            type="tel"
+                            id="customerContact"
+                            placeholder="Enter customer contact"
+                            required
+                          />
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn-secondary" id="closeCusModalFooter">
+                        Close
+                      </button>
+                      <button id="saveCusBtn" class="btn-primary">
+                        Save changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button id="refreshCusTable" class="all-cus-btn">Refresh</button>
             </div>
           </div>
           <div class="action-container">
@@ -322,32 +386,34 @@
             <table>
               <thead>
                 <tr>
+                  <th>Id</th>
                   <th>Customer Name</th>
-                  <th>Age</th>
                   <th>Address</th>
                   <th>Phone</th>
                 </tr>
               </thead>
-              <tbody id="customerTable">
-                <tr>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                  <td>Customer</td>
-                </tr>
-              </tbody>
+              <tbody id="customerTable"></tbody>
             </table>
           </div>
         </div>
       </section>
-      <section id="addNewCustomer" class="page"></section>
     </main>
     <footer></footer>
+
     <script src="/util/page-navigations.js"></script>
     <script src="/util/time-date.js"></script>
+
+    <script src="/model/Customer.js"></script>
+    <script src="/model/Item.js"></script>
+    <script src="/model/Order.js"></script>
+    <script src="/model/OrderDetails.js"></script>
+
     <script src="/controller/itemController.js"></script>
-    <!-- <script src="/controller/customerController.js"></script> -->
+    <script src="/controller/customerController.js"></script>
     <script src="/controller/itemController.js"></script>
     <script src="/controller/orderController.js"></script>
+
+    <script src="/db/DB.js"></script>
+    <script src="/util/cusModel.js"></script>
   </body>
 </html>
